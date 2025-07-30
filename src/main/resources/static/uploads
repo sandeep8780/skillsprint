@@ -1,0 +1,14 @@
+@Configuration
+public class FileStorageConfig {
+    @Value("${file.upload-dir}")
+    private String uploadDir;
+
+    @Bean
+    public File uploadDirectory() {
+        File file = new File(uploadDir);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return file;
+    }
+}
